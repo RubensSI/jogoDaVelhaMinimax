@@ -1,4 +1,5 @@
-from jogo_da_velha import *
+from jogo import *
+from minimax import *
 
 # criar board
 board = criar_board()
@@ -10,8 +11,12 @@ jogador = 0
 ganhador = verifica_ganhador(board)
 while(not ganhador):
     print_board(board)
-    i = get_input_valid("Digite a linha: ")
-    j = get_input_valid("Digite a coluna: ")
+
+    if (jogador == 0):
+        i,j = movimento_ia(board, jogador)
+    else:
+        i = get_input_valid("Digite a linha: ")
+        j = get_input_valid("Digite a coluna: ")
     print()
 
     if (verifica_movimento(board, i, j)):
